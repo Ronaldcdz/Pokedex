@@ -1,0 +1,60 @@
+﻿@model List<Application.ViewModels.PokemonTypeViewModel>
+@{
+    ViewData["Title"] = "Types";
+}
+
+
+<div class="container-fluid">
+
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a asp-controller="PokemonType" asp-action="Create" class="btn btn-outline-success">Add a new Type</a>
+        </div>
+    </div>
+
+    <div class="row">
+
+
+
+
+
+
+        @if (Model == null || Model.Count == 0)
+        {
+
+            <h2>There is no Regions Created</h2>
+        }
+        else
+        {
+
+            @foreach (Application.ViewModels.PokemonTypeViewModel type in Model)
+            {
+
+                <div class="col-4">
+                    <div class="card shadow-sm mb-3">
+
+                        <div class="card-body">
+                            <h4>Type: @type.Name</h4>
+
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a asp-controller="PokemonType" asp-action="Edit" asp-route-id="@type.Id" class="btn btn-sm btn-outline-info">Edit</a>
+                                    <a asp-controller="PokemonType" asp-action="Delete" asp-route-id="@type.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+
+
+
+
+
+    </div>
+
+</div>
